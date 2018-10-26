@@ -1,0 +1,5 @@
+build
+*/key.txt
+.ipynb*
+pybabelnet/__pycache__
+pybabelnet/.ipynb*
