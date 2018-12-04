@@ -1,4 +1,4 @@
-# pybabelnet
+# babelnetpy
 A python 3 interface for BabelNet https://babelnet.org/
 This is the extension of HTTP API https://babelnet.org/guide
  # install
