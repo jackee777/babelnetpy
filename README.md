@@ -20,8 +20,7 @@ print(synsets[0].senses)
 senses = bn.getSenses("BabelNet", "EN")
 print(senses[0])
 #getSynsetIdsFromResourceID is able to use after only getSynsets
-synset_ids = \
-    bn.getSynsetIdsFromResourceID("BabelNet", "EN", "NOUN", "WIKI")
+synset_ids = bn.getSynsetIdsFromResourceID("BabelNet", "EN", "NOUN", "WIKI")
 print(synset_ids[0])
 ```
 
