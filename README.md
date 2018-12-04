@@ -11,7 +11,7 @@ python setup.py install
 # Getting started
 Please register BabelNet (https://babelnet.org/register) and get your API key.
 Example codes is in examples directory.
- ```
+```
 from pybabelnet.babelnet import BabelNet
 bn = BabelNet(open("key.txt", "r").read()) # or BabelNet("your API key")
 synsets = bn.getSynsets("bn:03083790n")
@@ -28,15 +28,15 @@ print(synset_ids[0])
 HTTP API has more function than this code has; however it is needed to accesss several times. To reduce times and avoid using babelcoins, I don't make their functions. Perhaps, their functions may help us to search Babelnet, but I don't know that whether I add them or not.
 
 ## Lang
-'''
+```
 EN,
 ES,
 IT,
 etc...
-'''
+```
 
 ## pos
-'''
+```
 NOUN,
 ADJ,
 VERB,
@@ -46,10 +46,10 @@ DET,
 CCONJ,
 PRON,
 etc...
-'''
+```
 
 ## source
-'''
+```
 BABELNET,	// BabelNet senses, not available as of version 3.0
 WN,		// WordNet senses
 OMWN,		// Open Multilingual WordNet (deprecate)
@@ -106,4 +106,4 @@ OMWN_KO,	// Korean WordNet
 MCR_PT,		// Open Multilingual WordNet (Portuguese)
 OMWN_GAE,	// Irish WordNet (GAWN)
 WORD_ATLAS	// WordAtlas
-'''
+```
