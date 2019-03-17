@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -22,77 +21,6 @@ import it.uniroma1.lcl.babelnet.BabelSynsetRelation;
 import it.uniroma1.lcl.jlt.util.Language;
 
 public class Make_word_tree {
-	public static void write_lemmas(HashMap<String, List<List<String>>> lemma_map) {
-		for (String key : lemma_map.keySet()) {
-			File file = new File("lemmas/"+key.replace(":", "_"));
-			//out.println(key);
-			try{
-				file.createNewFile();
-				BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-			    for(List<String> lemma_info: lemma_map.get(key)) {
-			    	bw.write(lemma_info.get(0)+" "+lemma_info.get(1));
-			        bw.newLine();
-			    }
-		        bw.close();
-			}catch(IOException e){
-			    System.out.println(e);
-			}
-			//System.out.println(key + " => " + lemma_map.get(key));
-		}
-
-	}
-
-	public static void write_tree(HashMap<String, List<String>> id_tree) {
-		for (String key : id_tree.keySet()) {
-			File file = new File("relations/"+key.replace(":", "_"));
-			try{
-				file.createNewFile();
-				BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-			    bw.write(id_tree.get(key).get(0));
-			    for(int i = 1; i < id_tree.get(key).size(); i++){
-			    	bw.write(" "+id_tree.get(key).get(i));
-			    }
-		        bw.close();
-			}catch(IOException e){
-			    System.out.println(e);
-			}
-		}
-	}
-
-	public static void get_tree(HashMap<String, List<String>> id_tree) {
-		out.println(id_tree);
-		for (String key : id_tree.keySet()) {
-			File file = new File("files/getSynsetIds");
-			try{
-				file.createNewFile();
-				BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-				out.println(id_tree.get(key).toString());
-			    bw.write(id_tree.get(key).get(0));
-			    for(int i = 1; i < id_tree.get(key).size(); i++){
-			    	bw.write(" "+id_tree.get(key).get(i));
-			    }
-		        bw.close();
-			}catch(IOException e){
-			    System.out.println(e);
-			}
-		}
-	}
-
-	public static void write_synsets(String word, Set<String> synsets) {
-		File file = new File("word_synsets/"+word);
-		try{
-			file.createNewFile();
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		    for(String synset: synsets) {
-		    	//out.println(synset);
-		    	bw.write(synset);
-		    	bw.newLine();
-		    }
-	        bw.close();
-		}catch(IOException e){
-		    System.out.println(e);
-		}
-	}
 
 	public static List<List<String>> get_simple_lemmas(BabelSynsetID synset_id) {
 		BabelNet bn = BabelNet.getInstance();
@@ -220,8 +148,6 @@ public class Make_word_tree {
 		String word = args[0];
 		HashMap<String, List<String>> id_tree = get_tree(word);
 		//out.println(id_tree);
-		write_tree(id_tree);
-		write_synsets(word, id_tree.keySet());
 		//for(int i = 0; i < 100; i++) out.print("");
 		out.println("finish");
 		//out.println("check");
