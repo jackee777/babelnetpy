@@ -4,6 +4,14 @@ from babelnetpy.utils import dict2obj
 
 class BabelNet(object):
     def __init__(self, key_path):
+        """
+        API_PATH: base url
+        synset_ids: babelnet synsetids
+        synsets: babelnet synsets
+        senses: babelnet word senses
+        lang: language
+        key: api key
+        """        
         self.API_PATH = "https://babelnet.io/v5/"
         self.synset_ids = []
         self.synsets = []
@@ -13,6 +21,21 @@ class BabelNet(object):
         self.key = key_path
 
     def make_url(self, **params):
+        """
+        this makes the target url that corresponds to the function
+        
+        params: lemma, id, lang, targetLang, pos, source
+        lemma; word
+        id: babelnet synsetids
+        lang: language
+        targetLang: target language that is often the same as lang; howerver rarely is not same.
+        pos: part of speech
+        source: wikipedia and so on
+        lemma_type: full, simple
+        force_compare: A == a. a big character is the same as a small character.
+        
+        return: target url
+        """        
         synset_url = self.API_PATH
         synset_url += params["function"]
         if params.get("lemma"):
@@ -45,6 +68,17 @@ class BabelNet(object):
         return synset_url
 
     def getSynset_Ids(self, lemma, lang, targetLang=None, pos=None, source=None):
+        """
+        get synsetids to request target url
+        
+        lemma; word
+        lang: language
+        targetLang: target language that is often the same as lang; howerver rarely is not same.
+        pos: part of speech
+        source: wikipedia and so on
+        
+        return synsetsids
+        """
         self.lang = lang
         synset_url = self.make_url(function="getSynsetIds?",
             lemma=lemma, lang=self.lang, pos=pos, source=source)
@@ -56,6 +90,15 @@ class BabelNet(object):
         return synset_ids
 
     def getSynsets(self, synset_id, targetLang=None, change_lang=False):
+        """
+        get synsets to request target url
+        
+        synset_id: a babelnet synsetid
+        targetLang: target language that is often the same as lang; howerver rarely is not same.
+        change_lang: for translation or sub language
+        
+        return synsets
+        """        
         if change_lang and targetLang != None:
             if type(targetLang) == list:
                 self.lang = targetLang[0]
@@ -71,6 +114,13 @@ class BabelNet(object):
         return synsets
 
     def getOutgoingEdges(self, synset_id):
+        """
+        get edges that has relationships against other synsets to request target url
+        
+        synset_id: a babelnet synsetid
+        
+        return edges
+        """     
         synset_url = self.make_url(function="getOutgoingEdges?",
             id=synset_id)
         synset_url = synset_url.format(synset_id, self.key)
@@ -81,6 +131,16 @@ class BabelNet(object):
         return edges
 
     def getSenses(self, lemma, lang, lemma_type="full", force_compare=True):
+        """
+        get senses from synsets that has been already got       
+        
+        lang: language
+        pos: part of speech
+        lemma_type: full, simple
+        force_compare: A == a. a big character is the same as a small character.
+        
+        return: Senses
+        """
         senses = []
         if "full" == lemma_type:
             for synset in self.synsets:
@@ -107,7 +167,18 @@ class BabelNet(object):
 
     def getSynsetIdsFromResourceID(self, lemma, lang, pos, source, \
         lemma_type="full", force_compare=True):
-
+        """
+        get synsetids from synsets and senses that has been already got 
+        
+        lemma; word
+        lang: language
+        pos: part of speech
+        source: wikipedia and so on
+        lemma_type: full, simple
+        force_compare: A == a. a big character is the same as a small character.
+        
+        return: SynsetIds
+        """
         synset_ids = []
         if "full" == lemma_type:
             for synset in self.synsets:

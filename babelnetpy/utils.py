@@ -12,7 +12,7 @@ class dict2obj(dict):
                 setattr(self, key, value)
                 
 """
-#this class does not respond the list class but respond  the dict class to the object class
+#this class does not respond the list class but responds the dict class to the object class
 class dict2obj(dict):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
