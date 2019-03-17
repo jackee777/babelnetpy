@@ -114,5 +114,5 @@ I recommend you create Java server that moves in your local and access your serv
 You can use this program by changing API_PATH into localhost.
 
 Python package is not used for free, so I don't know whether to publish server program is ok or not.
-I put sample server which function is getSynsetIds in example/javaserver directory.
+I put sample server which function is getSynsetIds in examples/javaserver directory.
 Um..., if this server program has a problem, maybe, I delete this. Please contact with me in issue page.
