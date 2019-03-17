@@ -108,11 +108,13 @@ OMWN_GAE,	// Irish WordNet (GAWN)
 WORD_ATLAS	// WordAtlas
 ```
 
-### for people that wants to use this in offline
+#### for people that wants to use this in offline
 Unfortunately, this program does not correspond to offline.
 I recommend you create Java server that moves in your local and access your server.
 You can use this program by changing API_PATH into localhost.
 
+#### java server
+I don't plan to update this program and add comments because I don't want to make a problem.
 Python package is not used for free, so I don't know whether to publish server program is ok or not.
 I put sample server which function is getSynsetIds in examples/javaserver directory.
 Um..., if this server program has a problem, maybe, I delete this. Please contact with me in issue page.
