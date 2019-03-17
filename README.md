@@ -12,7 +12,7 @@ python setup.py install
 Please register BabelNet (https://babelnet.org/register) and get your API key.
 Example codes is in examples directory.
 ```
-from pybabelnet.babelnet import BabelNet
+from babelnetpy.babelnet import BabelNet
 bn = BabelNet(open("key.txt", "r").read()) # or BabelNet("your API key")
 synsets = bn.getSynsets("bn:03083790n")
 print(synsets[0].senses)

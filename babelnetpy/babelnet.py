@@ -1,6 +1,6 @@
 import json
 import urllib.request
-from pybabelnet.utils import dict2obj
+from babelnetpy.utils import dict2obj
 
 class BabelNet(object):
     def __init__(self, key_path):

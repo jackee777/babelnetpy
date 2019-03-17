@@ -7,8 +7,8 @@ Created on 27/10/2018
 from distutils.core import setup
 
 setup(
-    name='pybabelnet',
-    packages = ['pybabelnet'],
+    name='babelnetpy',
+    packages = ['babelnetpy'],
     version='0.1.0',
     description='it extendings BabelNet HTTP API for python 3',
     long_description="README.md",

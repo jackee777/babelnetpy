@@ -1,4 +1,4 @@
-from pybabelnet.babelnet import BabelNet
+from babelnetpy.babelnet import BabelNet
 
 bn = BabelNet(open("key.txt", "r").read())
 
