@@ -118,3 +118,7 @@ I don't plan to update this program and add comments because I don't want to mak
 Python package is not used for free, so I don't know whether to publish server program is ok or not.
 I put sample server which function is getSynsetIds in examples/javaserver directory.
 Um..., if this server program has a problem, maybe, I delete this. Please contact with me in issue page.
+
+I copied and referenced this server program.
+Thank you for this repogitory(https://github.com/opengl-8080/simple-http-server and japanese introduction page https://qiita.com/opengl-8080/items/ca152658a0e52c786029).
+Good Luck!
