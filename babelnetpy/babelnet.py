@@ -129,39 +129,66 @@ class BabelNet(object):
         edges = [dict2obj(js) for js in json.loads(synset_json)]
         self.edges = edges
         return edges
-
-    def getSenses(self, lemma, lang, lemma_type="full", force_compare=True):
+    
+    def getWordNetId(self, synset_id):
         """
-        get senses from synsets that has been already got       
+        For your internal server only,
+        get WordNet id which is equal to BabelNet id
+        
+        synset_id: a babelnet synsetid
+        
+        return wordnet synsetid
+        """
+        assert("internal server only", self.API is None)
+        synset_url = self.make_url(function="getWordnetId?",
+            id=synset_id)
+        synset_url = synset_url.format(synset_id, self.key)
+        synset_json = urllib.request.urlopen(synset_url).read()
+        synset_json = synset_json.decode("utf8")
+        wordnet_ids = [dict2obj(js) for js in json.loads(synset_json)]
+        return wordnet_ids
+
+    def getSenses(self, lemma, lang, lemma_type="full", force_compare=True, useURL=False):
+        """
+        get senses from synsets     
         
         lang: language
         pos: part of speech
         lemma_type: full, simple
         force_compare: A == a. a big character is the same as a small character.
+        useURL: if it is True, it search from url. Unless, search from data has been already got  
         
         return: Senses
         """
-        senses = []
-        if "full" == lemma_type:
-            for synset in self.synsets:
-                for sense in synset.senses:
-                    if force_compare and \
-                        sense.properties.fullLemma.lower() == lemma.lower() and \
-                        sense.properties.language.lower() == lang.lower():
-                        senses.append(sense)
-                    elif sense.properties.fullLemma == lemma and \
-                        sense.properties.language == lang:
-                        senses.append(sense)
-        elif "simple" == lemma_type:
-            for synset in self.synsets:
-                for sense in synset.senses:
-                    if force_compare and \
-                        sense.properties.fullLemma.lower() == lemma.lower() and \
-                        sense.properties.language.lower() == lang.lower():
-                        senses.append(sense)
-                    elif sense.properties.simpleLemma == lemma and \
-                        sense.properties.language == lang:
-                        senses.append(sense)
+        if useURL:
+            lang = lang or self.lang
+            synset_url = self.make_url(function="getSenses?",
+                lemma=lemma, lang=lang)
+            synset_json = urllib.request.urlopen(synset_url).read()
+            synset_json = synset_json.decode("utf8")
+            senses = [dict2obj(js) for js in json.loads(synset_json)]
+        else:
+            senses = []
+            if "full" == lemma_type:
+                for synset in self.synsets:
+                    for sense in synset.senses:
+                        if force_compare and \
+                            sense.properties.fullLemma.lower() == lemma.lower() and \
+                            sense.properties.language.lower() == lang.lower():
+                            senses.append(sense)
+                        elif sense.properties.fullLemma == lemma and \
+                            sense.properties.language == lang:
+                            senses.append(sense)
+            elif "simple" == lemma_type:
+                for synset in self.synsets:
+                    for sense in synset.senses:
+                        if force_compare and \
+                            sense.properties.fullLemma.lower() == lemma.lower() and \
+                            sense.properties.language.lower() == lang.lower():
+                            senses.append(sense)
+                        elif sense.properties.simpleLemma == lemma and \
+                            sense.properties.language == lang:
+                            senses.append(sense)
         self.senses = senses
         return senses
 
