@@ -114,33 +114,30 @@ public class Make_word_tree {
 
 		BabelNetQuery query = new BabelNetQuery.Builder(lemma).from(sLang).build();
 		List<BabelSynset> synsets = bn.getSynsets(query);
-		HashMap<String, List<String>> id_tree = new HashMap<String, List<String>>();
+
+		List<SynsetId> SynsetIds = new ArrayList<SynsetId>();
+		for (BabelSynset synset : synsets) {
+			SynsetId synsetid = new SynsetId();
+			synsetid.id = synset.getID().getID();
+			synsetid.pos = synset.getPOS().toString();
+			synsetid.source = synset.getSenseSources().toString();
+			if(pos != null && synsetid.pos == pos) {
+				SynsetIds.add(synsetid);
+			}
+			else if(pos == null){
+				SynsetIds.add(synsetid);
+			}
+		}
 
 		File file = new File("files/getSynsetIds");
 		try{
 			file.createNewFile();
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-			List<SynsetId> SynsetIds = new ArrayList<SynsetId>();
-			for (BabelSynset synset : synsets) {
-				List<BabelSynsetRelation> edges = synset.getOutgoingEdges();
-				for (BabelSynsetRelation edge : edges) {
-					if (edge.getLanguage() == Language.EN && edge.getPointer().isHypernym()) {
-						BabelSynsetID synset_id = edge.getBabelSynsetIDTarget();
-						List<List<String>> simple_lemmas = get_simple_lemmas(synset_id);
-						SynsetId synsetid = new SynsetId();
-						synsetid.id = synset_id.getID();
-						synsetid.pos = synset_id.getPOS().toString();
-						synsetid.source = synset_id.getSource().getSourceName();
-						SynsetIds.add(synsetid);
-					}
-				}
-			}
 			bw.write(new Gson().toJson(SynsetIds));
 	        bw.close();
 		}catch(IOException e){
 		    System.out.println(e);
 		}
-
 	}
 
 
