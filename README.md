@@ -26,12 +26,12 @@ print(synset_ids[0])
 
 # Offline use
 You need to set https://github.com/jackee777/babelnet_offline and run server.
-'''
+```
 from babelnetpy.babelnet import BabelNet
 
 bn = BabelNet(None)
 bn.API_PATH = "http://localhost:1000/"
-'''
+```
 
 # infomation
 HTTP API has more function than this code has; however it is needed to accesss several times. To reduce times and avoid using babelcoins, I don't make their functions. Perhaps, their functions may help us to search Babelnet, but I don't know that whether I add them or not.
