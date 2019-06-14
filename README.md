@@ -24,6 +24,15 @@ synset_ids = bn.getSynsetIdsFromResourceID("BabelNet", "EN", "NOUN", "WIKI")
 print(synset_ids[0])
 ```
 
+# Offline use
+You need to set https://github.com/jackee777/babelnet_offline and run server.
+'''
+from babelnetpy.babelnet import BabelNet
+
+bn = BabelNet(None)
+bn.API_PATH = "http://localhost:1000/"
+'''
+
 # infomation
 HTTP API has more function than this code has; however it is needed to accesss several times. To reduce times and avoid using babelcoins, I don't make their functions. Perhaps, their functions may help us to search Babelnet, but I don't know that whether I add them or not.
 
@@ -107,18 +116,3 @@ MCR_PT,		// Open Multilingual WordNet (Portuguese)
 OMWN_GAE,	// Irish WordNet (GAWN)
 WORD_ATLAS	// WordAtlas
 ```
-
-#### for people that wants to use this in offline
-Unfortunately, this program does not correspond to offline.
-I recommend you create Java server that moves in your local and access your server.
-You can use this program by changing API_PATH into localhost.
-
-#### java server
-I don't plan to update this program and add comments because I don't want to make a problem.
-Python package is not used for free, so I don't know whether to publish server program is ok or not.
-I put sample server which function is getSynsetIds in examples/javaserver directory.
-Um..., if this server program has a problem, maybe, I delete this. Please contact with me in issue page.
-
-I copied and referenced this server program.
-Thank you for this repogitory(https://github.com/opengl-8080/simple-http-server and japanese introduction page https://qiita.com/opengl-8080/items/ca152658a0e52c786029).
-Good Luck!
