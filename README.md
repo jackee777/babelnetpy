@@ -116,3 +116,6 @@ MCR_PT,		// Open Multilingual WordNet (Portuguese)
 OMWN_GAE,	// Irish WordNet (GAWN)
 WORD_ATLAS	// WordAtlas
 ```
+
+# Thank you for reading
+If this program is helpful for you, I want you to give the star this program for me. Have a nice day.
