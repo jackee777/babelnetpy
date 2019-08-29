@@ -2,7 +2,7 @@
 A python 3 interface for BabelNet https://babelnet.org/
 This is the extension of HTTP API https://babelnet.org/guide
 
-# install
+# How to install
 Please download the project, use cd to move to the babelnetpy folder and run:
 ```
 python setup.py install
@@ -23,9 +23,9 @@ print(senses[0])
 synset_ids = bn.getSynsetIdsFromResourceID("BabelNet", "EN", "NOUN", "WIKI")
 print(synset_ids[0])
 ```
-#### key.txt
-The purpose of "key.txt" used in 'BabelNet(open("key.txt", "r").read())' is to avoid a mistake that you update your API key accidentaly.
-If you don't use the github or another web application, I recommend to use 'BabelNet("your API key")' because you don't need to make an  additional file.
+#### About key.txt
+The purpose of "key.txt" used in `BabelNet(open("key.txt", "r").read())` is to avoid a mistake that you update your API key accidentaly.
+If you don't use the github or another web application, I recommend to use `BabelNet("your API key")` because you don't need to make an  additional file.
 The "key.txt" in the example code means that you need to make "key.txt" and write your API key in that file. The API key is written on the home page after log-in.
 
 
@@ -39,18 +39,18 @@ bn.API_PATH = "http://localhost:1000/"
 ```
 As far as I know, this server works well. However, I'm not familiar with the programming of the server. If you have trouble with the server, "babelnetlookup" is good and I sometimes maintenance it (unfortunately, babelnetpy cannot use against babelnetlookup).
 
-# infomation
+# Infomation
 HTTP API has more functions than this code has; however, it is needed to access several times. To reduce times and avoid using babelcoins, I don't make their functions. Perhaps, their functions may help us to search Babelnet, but I don't know whether I add them or not.
 
 ## Lang
-``
+```
 EN,
 ES,
 IT,
 CA,DE,FR,IS,PL,RO,AF,AR,BG,CS,CY,DA,EL,ET,FA,FI,GA,HE,HI,HR,HU,ID,JA,KO,LT,LV,MS,NL,NO,PT,RU,SK,SL,SQ,SR,SV,SW,TL,TR,UK,VI,ZH,MT,EU,EO,LA,GL,WAR,CEB,MIN,KK,UZ,HY,VO,NN,AZ,TH,OC,KA,MK,BE,NEW,TT,PMS,TA,TE,HT,UR,BS,BR,JV,MG,CE,LB,MR,IS,ML,PNB,BA,MY,LMO,BN,YO,FY,AN,CV,TG,KY,NE,IO,GU,BPY,SCO,SCN,NDS,KU,AST,QU,SU,ALS,GD,KN,AM,IA,NAP,CKB,BUG,WA,MN,ARZ,MZN,SI,PA,YI,SAH,VEC,FO,SA,BAR,NAH,OS,PAM,OR,HSB,SE,LI,MRJ,MI,ILO,CO,HIF,BCL,GAN,FRR,BO,RUE,GLK,MHR,PS,TK,PAG,VLS,GV,XMF,DIQ,KM,KV,ZEA,CSB,CRH,HAK,VEP,AY,DV,SO,SC,NRM,RM,UDM,KOI,KW,UG,STQ,LAD,WUU,LIJ,FUR,EML,MT,AS,BH,GN,PI,GAG,PCD,KSH,NOV,SZL,ANG,NV,IE,ACE,EXT,FRP,MWL,LN,SN,DSB,LEZ,PFL,KRC,HAW,PDC,KAB,XAL,RW,MYV,TO,ARC,KL,BJN,KBD,LO,HA,PAP,TPI,AV,LBE,MDF,JBO,WO,NA,BXR,TY,SRN,IG,NSO,KG,TET,KAA,AB,LTG,ZU,ZA,TYV,CDO,CHY,RMY,CU,TN,CHR,TW,GOT,BI,PIH,SM,RN,BM,MO,SS,IU,SD,PNT,KI,OM,XH,TS,EE,AK,FJ,TI,KS,LG,SG,NY,FF,VE,CR,ST,DZ,TUM,CH,SIMPLE,MUL,BE_X_OLD,NDS_NL,CBK_ZAM,ROA_RUP,FIU_VRO,BAT_SMG,IK,SH,AZB,MAI,LRC,GOM,OLO,JAM,TCY,ADY,ZH_CLASSICAL,ZH_YUE,ZH_MIN_NAN
 ```
 
-## pos
+## PoS (Part of Speech)
 ```
 NOUN,
 ADJ,
@@ -63,7 +63,7 @@ PRON,
 etc...
 ```
 
-## source
+## Source
 ```
 BABELNET,	// BabelNet senses, not available as of version 3.0
 WN,		// WordNet senses
