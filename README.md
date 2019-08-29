@@ -3,7 +3,7 @@ A python 3 interface for BabelNet https://babelnet.org/
 This is the extension of HTTP API https://babelnet.org/guide
 
 # install
-Please download the project, use cd to move to the pybabelfy folder and run:
+Please download the project, use cd to move to the babelnetpy folder and run:
 ```
 python setup.py install
 ```
@@ -13,7 +13,7 @@ Please register BabelNet (https://babelnet.org/register) and get your API key.
 Example codes is in examples directory.
 ```
 from babelnetpy.babelnet import BabelNet
-bn = BabelNet(open("key.txt", "r").read()) # or BabelNet("your API key")
+bn = BabelNet("your API key") # or BabelNet(open("key.txt", "r").read())
 synsets = bn.getSynsets("bn:03083790n")
 print(synsets[0].senses)
 #getSenses is able to use after only getSynsets
@@ -23,21 +23,27 @@ print(senses[0])
 synset_ids = bn.getSynsetIdsFromResourceID("BabelNet", "EN", "NOUN", "WIKI")
 print(synset_ids[0])
 ```
+#### key.txt
+The purpose of "key.txt" used in 'BabelNet(open("key.txt", "r").read())' is to avoid a mistake that you update your API key accidentaly.
+If you don't use the github or another web application, I recommend to use 'BabelNet("your API key")' because you don't need to make an  additional file.
+The "key.txt" in the example code means that you need to make "key.txt" and write your API key in that file. The API key is written on the home page after log-in.
+
 
 # Offline use
-You need to set https://github.com/jackee777/babelnet_offline and run server.
+You need to set https://github.com/jackee777/babelnet_offline and run this server.
 ```
 from babelnetpy.babelnet import BabelNet
 
 bn = BabelNet(None)
 bn.API_PATH = "http://localhost:1000/"
 ```
+As far as I know, this server works well. However, I'm not familiar with the programming of the server. If you have trouble with the server, "babelnetlookup" is good and I sometimes maintenance it (unfortunately, babelnetpy cannot use against babelnetlookup).
 
 # infomation
-HTTP API has more function than this code has; however it is needed to accesss several times. To reduce times and avoid using babelcoins, I don't make their functions. Perhaps, their functions may help us to search Babelnet, but I don't know that whether I add them or not.
+HTTP API has more functions than this code has; however, it is needed to access several times. To reduce times and avoid using babelcoins, I don't make their functions. Perhaps, their functions may help us to search Babelnet, but I don't know whether I add them or not.
 
 ## Lang
-```
+``
 EN,
 ES,
 IT,
@@ -118,4 +124,4 @@ WORD_ATLAS	// WordAtlas
 ```
 
 # Thank you for reading
-If this program is helpful for you, I want you to give the star this program for me. Have a nice day.
+If this program is helpful for you, I want you to give the star this program for me because it leads to assist looking for my job. Have a nice day.
