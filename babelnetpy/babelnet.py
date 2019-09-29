@@ -139,7 +139,7 @@ class BabelNet(object):
         
         return wordnet synsetid
         """
-        assert("internal server only", self.API is None)
+        assert("internal server only", self.key is None)
         synset_url = self.make_url(function="getWordnetId?",
             id=synset_id)
         synset_url = synset_url.format(synset_id, self.key)
