@@ -1,6 +1,7 @@
 # babelnetpy
 A python 3 interface for BabelNet https://babelnet.org/
 This is the extension of HTTP API https://babelnet.org/guide
+Please check this issue https://github.com/jackee777/babelnetpy/issues/5 about requests branch.
 
 # How to install
 Please download the project, use cd to move to the babelnetpy folder and run:
