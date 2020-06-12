@@ -83,7 +83,7 @@ class BabelNet(object):
         synset_url = self.make_url(function="getSynsetIds?",
             lemma=lemma, lang=self.lang, pos=pos, source=source)
         synset_url = synset_url.format(lemma, self.lang, self.key)
-        synset_json = requests.get(synset_url.encode('utf8', "backslashreplace").decode('utf8', "backslashreplace")).text
+        synset_json = requests.get(synset_url.encode('utf8', "ignore").decode('utf8', "ignore")).text
         synset_ids = [dict2obj(js) for js in json.loads(synset_json)]
         self.synset_ids = synset_ids
         return synset_ids
@@ -106,7 +106,7 @@ class BabelNet(object):
         targetLang = targetLang or self.lang
         synset_url = self.make_url(function="getSynset?",
             id=synset_id, targetLang=targetLang)
-        synset_json = requests.get(synset_url.encode('utf8', "backslashreplace").decode('utf8', "backslashreplace")).text
+        synset_json = requests.get(synset_url.encode('utf8', "ignore").decode('utf8', "ignore")).text
         synsets = [dict2obj(json.loads(synset_json))]
         self.synsets = synsets
         return synsets
@@ -122,7 +122,7 @@ class BabelNet(object):
         synset_url = self.make_url(function="getOutgoingEdges?",
             id=synset_id)
         synset_url = synset_url.format(synset_id, self.key)
-        synset_json = requests.get(synset_url.encode('utf8', "backslashreplace").decode('utf8', "backslashreplace")).text
+        synset_json = requests.get(synset_url.encode('utf8', "ignore").decode('utf8', "ignore")).text
         edges = [dict2obj(js) for js in json.loads(synset_json)]
         self.edges = edges
         return edges
@@ -140,7 +140,7 @@ class BabelNet(object):
         synset_url = self.make_url(function="getWordnetId?",
             id=synset_id)
         synset_url = synset_url.format(synset_id, self.key)
-        synset_json = requests.get(synset_url.encode('utf8', "backslashreplace").decode('utf8', "backslashreplace")).text
+        synset_json = requests.get(synset_url.encode('utf8', "ignore").decode('utf8', "ignore")).text
         wordnet_ids = [dict2obj(js) for js in json.loads(synset_json)]
         return wordnet_ids
 
@@ -160,7 +160,7 @@ class BabelNet(object):
             lang = lang or self.lang
             synset_url = self.make_url(function="getSenses?",
                 lemma=lemma, lang=lang)
-            synset_json = requests.get(synset_url.encode('utf8', "backslashreplace").decode('utf8', "backslashreplace")).text
+            synset_json = requests.get(synset_url.encode('utf8', "ignore").decode('utf8', "ignore")).text
             senses = [dict2obj(js) for js in json.loads(synset_json)]
         else:
             senses = []
