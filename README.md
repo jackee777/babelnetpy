@@ -23,11 +23,17 @@ print(senses[0])
 synset_ids = bn.getSynsetIdsFromResourceID("BabelNet", "EN", "NOUN", "WIKI")
 print(synset_ids[0])
 ```
-#### About key.txt
+
+## About key.txt
 The purpose of "key.txt" used in `BabelNet(open("key.txt", "r").read())` is to avoid a mistake that you update your API key accidentaly.
 If you don't use the github or another web application, I recommend to use `BabelNet("your API key")` because you don't need to make an  additional file.
 The "key.txt" in the example code means that you need to make "key.txt" and write your API key in that file. The API key is written on the home page after log-in.
 
+# Caution about BabelNet's version update (HOWEVER, YOU SHOULD CHANGE IT)
+In Apr/2021, BabelNet updates to version 6; however, this program does not change because I don't debug it.
+If you want to use the new version, you write 'bn.API_PATH = "https://babelnet.io/v6/"' after 'bn = BabelNet("your API key")'.
+(If anyone debug it and this program works correctly, please tell me (send the comment to [issue 6](https://github.com/jackee777/babelnetpy/issues/6)) / pull requests.)
+Of course, self.API_PATH in line 15 of babelnet.py is same.
 
 # Offline use
 You need to set https://github.com/jackee777/babelnet_offline and run this server.
