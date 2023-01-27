@@ -2,6 +2,11 @@
 A python 3 interface for BabelNet https://babelnet.org/
 This is the extension of HTTP API https://babelnet.org/guide
 
+# Official python package released (edit: 2023/01/27)
+Please also check the official python package https://pypi.org/project/babelnet/ because your purpose are probably resolved.
+This repository is unofficial when official package was not existed or didn't work completely.
+I don't know the official package covers all methods in this repository, but, it seems good :)
+
 # How to install
 Please download the project, use cd to move to the babelnetpy folder and run:
 ```
